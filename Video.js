@@ -1,5 +1,5 @@
 import React,{useState,useRef} from 'react';
-import random from "./2024-10-13 22-54-50.mkv"
+
 import { Button } from '@nextui-org/button';
 import { MutedSpeakerIcon, PlayIcon, SpeakerIcon,PictureInPictureIcon, FullScreenIcon, ResSizeScreenIcon } from '../../svgs/Icon';
 import { PauseIcon } from '../../svgs/Icon';
@@ -19,7 +19,7 @@ const handleDuration = (time) => {
     return `${h}:${format.format(h)}:${format.format(s)}`;
 }
 
-const Video = () => {
+const Video = ({SRC}) => {
     const VideoRef = useRef();
     const VideoContinerRef = useRef();
     const [Play,setPlay] = useState(false);
@@ -98,7 +98,7 @@ const Video = () => {
                 </div>
             </div>
                 {/* here we used oncanplay to avoid error when the media is not loaded bc if its not the duration will be undifend */}
-             <video loop  onTimeUpdate={handleTimeUpdate} onCanPlay={() => setVideoDuration(VideoRef.current.duration)} ref={VideoRef} src={random} className={` object-cover rounded-3xl ${isFullScreen ? "w-screen h-screen" : ""}`}></video>
+             <video loop  onTimeUpdate={handleTimeUpdate} onCanPlay={() => setVideoDuration(VideoRef.current.duration)} ref={VideoRef} src={SRC} className={` object-cover rounded-3xl ${isFullScreen ? "w-screen h-screen" : ""}`}></video>
         </div>
     );
 }
